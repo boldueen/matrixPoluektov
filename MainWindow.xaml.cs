@@ -23,6 +23,7 @@ namespace matrixPoluektov
         public MainWindow()
         {
             InitializeComponent();
+            //try to fkn push
         }
     }
 }
