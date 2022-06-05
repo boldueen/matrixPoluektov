@@ -5,12 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:matrixPoluektov"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Height="56" Margin="10,10,0,0" VerticalAlignment="Top" Width="56"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="56" Margin="66,66,0,0" VerticalAlignment="Top" Width="56"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="56" Margin="122,122,0,0" VerticalAlignment="Top" Width="56"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="56" Margin="178,178,0,0" VerticalAlignment="Top" Width="56"/>
+        Title="MainWindow" Height="500" Width="800">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <!--<Border BorderBrush="Blue" BorderThickness="1" Grid.Column="1" Grid.Row="1" Background="#FFCE2389" Width="100" Height="100"/>-->
+
+        <ComboBox ItemsSource="{Binding MatrixSize}" 
+                  SelectionChanged="ComboBox_SelectionChanged"
+                  Height="50" Width="100"
+                  FontSize="35"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  HorizontalContentAlignment="Center"
+                  Grid.Column="0" Grid.Row="0"
+                  />
+
+        <TextBlock  Text="choose matrix size..." 
+                    IsHitTestVisible="False"
+                    VerticalAlignment="Bottom"  Height="21" RenderTransformOrigin="0.5,0.5" Margin="25,0,20,215" Grid.RowSpan="2"
+                    >
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.522"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <DataGrid 
+                Background="White"
+                GridLinesVisibility="None"
+                AutoGenerateColumns="True" ItemsSource="{Binding Matrix}" Height="201" Width="289"
+                HeadersVisibility="None"  RowHeaderWidth="0"
+                CanUserAddRows="False" CanUserDeleteRows="False"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                >
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0.3,0.3,0.3,0.3"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                    </Style>
+                </DataGrid.CellStyle>
+            </DataGrid>
+        </StackPanel>
+
+        <TextBlock Grid.Column="1" Grid.Row="2" x:Name='myTextBox'
+                   Text="{Binding ElementName=myTextBox,Path=Text}"
+            />
 
     </Grid>
+
+
+
 </Window>
